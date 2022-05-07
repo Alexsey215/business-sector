@@ -1,0 +1,28 @@
+.search__form {
+  &__input {
+    background-color: #5A5C66;
+    color: #B2B7BF;
+    width: 100%;
+    border: none;
+    padding: 15px 28px;
+    outline: none;
+  }
+  &__btn {
+    background: #5A5C66;
+    border: none;
+    padding: 15px;
+    fill: white;
+    &:hover {
+      & > svg {
+        opacity: 0.3;
+        transition: 0.2s;
+      }
+    }
+    &:active {
+      & > svg {
+        fill: white;
+        transition: 0.2s;
+      }
+    }
+  }
+}

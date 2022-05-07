@@ -2,9 +2,8 @@
 
 @import "~bootstrap/scss/bootstrap";
 
-/* The following line can be included in your src/index.js or App.js file */
-
-import './App.scss';
 .App {
   text-align: center;
+  max-width: 1077px;
 }
+

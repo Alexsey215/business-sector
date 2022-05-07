@@ -1,0 +1,16 @@
+.data {
+  border-bottom: 1px solid #E3E6EC;
+  border-left: 1px solid #E3E6EC;
+  border-right: 1px solid #E3E6EC;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 137.69%;
+  color: #474955;
+  &__item {
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
