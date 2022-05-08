@@ -6,13 +6,16 @@
   font-size: 14px;
   line-height: 137.69%;
   color: #FFF;
+
   &__items {
     display: flex;
     justify-items: start;
+
     &__item {
       position: relative;
       cursor: pointer;
       transition: 0.2s;
+
       &::after {
         content: "";
         display: block;
@@ -26,13 +29,16 @@
         transform: rotate(135deg);
         z-index: 1000;
       }
+
       &:hover {
         opacity: 0.3;
       }
+
       &:hover::after {
         opacity: 0.3;
       }
     }
+
     &__id {
       display: flex;
       justify-items: start;

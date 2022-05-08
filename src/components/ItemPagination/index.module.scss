@@ -1,0 +1,40 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin-top: 24px;
+
+    &__btn {
+        border: none;
+        background-color: #fff;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 137.69%;
+        color: #474955;
+        transition: 0.2s;
+
+        &:hover {
+            color: #7EBC3C;
+        }
+    }
+
+    &__links {
+        display: flex;
+
+        &__link {
+            padding: 5px;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 137.69%;
+            text-decoration: none;
+            color: #474955;
+            transition: 0.2s;
+
+            &:hover {
+                color: #7EBC3C;
+            }
+        }
+    }
+}

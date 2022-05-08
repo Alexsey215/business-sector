@@ -1,24 +1,21 @@
-import Pagination from "react-bootstrap/Pagination"
-import {Link} from "react-router-dom";
-const ItemPagination = ({itemsPerPage, totalItem, paginate, nextPage, prevPage, currentPage}) => {
-    const pageNumbers = [];
-    for(let i = 1; i <= Math.ceil(totalItem/itemsPerPage); i++) {
-        pageNumbers.push(i);
-    }
+import style from "./index.module.scss";
+import { Link } from "react-router-dom";
+const ItemPagination = ({ pageNumbers, paginate, nextPage, prevPage }) => {
+
     return (
-        <>
-            <Pagination>
-                <Pagination.Prev onClick={() => prevPage()}/>
+        <div className={style.pagination}>
+            <button className={style.pagination__btn} onClick={() => prevPage()}>Назад</button>
+            <div className={style.pagination__links}>
                 {pageNumbers.map((number) => (
-                    <Pagination.Item onClick={() => paginate(number)} key={number}>
-                        <Link to={`/posts/page-${currentPage}`}>
+                    <Link className={style.pagination__links__link} onClick={() => paginate(number)} key={number} to={`/posts/${number}`}>
+                        <li>
                             {number}
-                        </Link>
-                    </Pagination.Item>
+                        </li>
+                    </Link>
                 ))}
-                <Pagination.Next onClick={() => nextPage()}/>
-            </Pagination>
-        </>
+            </div>
+            <button className={style.pagination__btn} onClick={() => nextPage()}>Далее</button>
+        </div>
     );
 }
 export default ItemPagination;

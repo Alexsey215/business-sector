@@ -1,22 +1,22 @@
-import { useEffect, useState } from "react";
 import "./App.scss";
-import {Container, Row, Col} from "react-bootstrap";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Main from "./components/Main"
 function App() {
 
-    return (
+  return (
     <>
       <Container className="App">
         <Router>
           <Routes>
-            <Route index path="/posts" element={<Main/>}/>
-            <Route path="/posts/:id" element={<Main/>}/>
+            <Route path="/" element={<Navigate replace to="/posts" />} />
+            <Route index path="/posts" element={<Main />} />
+            <Route path="/posts/:page" element={<Main />} />
           </Routes>
         </Router>
       </Container>
     </>
-    );
+  );
 }
 
 export default App;

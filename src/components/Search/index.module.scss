@@ -1,4 +1,8 @@
 .search__form {
+  display: flex;
+  max-width: 50%;
+  margin-top: 23px;
+
   &__input {
     background-color: #5A5C66;
     color: #B2B7BF;
@@ -7,19 +11,22 @@
     padding: 15px 28px;
     outline: none;
   }
+
   &__btn {
     background: #5A5C66;
     border: none;
     padding: 15px;
     fill: white;
+
     &:hover {
-      & > svg {
+      &>svg {
         opacity: 0.3;
         transition: 0.2s;
       }
     }
+
     &:active {
-      & > svg {
+      &>svg {
         fill: white;
         transition: 0.2s;
       }
