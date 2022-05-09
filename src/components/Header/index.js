@@ -5,7 +5,7 @@ const Header = ({ descendingSort }) => {
     return (
         <header className={style.header}>
             <Row className={style.header__items}>
-                <Col onClick={(items) => descendingSort(items)} className={style.header__items__id + " " + style.header__items__item} xs={1}>
+                <Col onClick={() => descendingSort()} className={style.header__items__id + " " + style.header__items__item} xs={1}>
                     <span>id</span>
                 </Col>
                 <Col className={style.header__items__item} xs={5}>

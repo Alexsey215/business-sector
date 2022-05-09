@@ -2,19 +2,19 @@ import { Col, Container, Row } from "react-bootstrap";
 import style from "./index.module.scss";
 import Header from "../Header";
 
-const DataList = ({ items, loading }) => {
-    if (loading) {
-        return <h4>Loading...</h4>
-    }
+const DataList = ({ items, loading, error }) => {
 
-    const descendingSort = (items) => {
-        items.sort((a, b) => a.id > b.id ? 1 : -1); // ВЫЗЫВАТЬ МБ В МЕЙНЕ C setPost
+    const descendingSort = () => {
+        items.sort((a, b) => a.id < b.id ? 1 : -1);
+        console.log(items);
     }
 
     return (
         <>
-            <Header descendingSort={descendingSort(items)} />
+            <Header descendingSort={descendingSort} />
             <Container className={style.wrap}>
+                {loading && <h4>Loading...</h4>}
+                {error && <h4>{error}</h4>}
                 {!!items
                     &&
                     items.map((item) =>

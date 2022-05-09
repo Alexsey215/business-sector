@@ -3,10 +3,14 @@ import Search from "../Search"
 import DataList from "../DataList";
 import ItemPagination from "../ItemPagination"
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "../../store/reducers/ActionCreators";
+
 
 function Main() {
-    const [posts, setPosts] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const dispatch = useDispatch();
+    const { posts, isLoading, error } = useSelector(state => state.postsReducer);
+
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostPerPage] = useState(10)
 
@@ -14,14 +18,7 @@ function Main() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPosts = async () => {
-            setLoading(true);
-            await fetch("https://jsonplaceholder.typicode.com/posts")
-                .then(response => response.json())
-                .then(data => setPosts(data))
-            setLoading(false);
-        }
-        fetchPosts();
+        dispatch(fetchPosts());
     }, [])
 
     useEffect(() => {
@@ -60,7 +57,7 @@ function Main() {
     return (
         <>
             <Search />
-            <DataList items={currentPosts} loading={loading} />
+            <DataList items={currentPosts} loading={isLoading} error={error} />
             <ItemPagination
                 pageNumbers={pageNumbers}
                 paginate={paginate}
