@@ -1,12 +1,26 @@
 import style from "./index.module.scss";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+
 const Search = () => {
     const [request, setRequest] = useState('')
 
+    const { posts } = useSelector(state => state.postsReducer);
+
     const searchHandler = (e) => {
         e.preventDefault()
-        console.log(request, e)
+        const searchedItems = [];
+        for (let i = 0; i < posts.length; i++) {
+            if (posts[i].title.toLowerCase().includes(request.toLowerCase())) {
+                searchedItems.push(posts[i]);
+            }
+        }
+        console.log(searchedItems);
     }
+
+    // const filteredItems = useMemo(() => {
+    //     return posts.filter(post => post.title.toLowerCase().includes(request.toLowerCase()));
+    // }, [request])
 
     return (
         <>

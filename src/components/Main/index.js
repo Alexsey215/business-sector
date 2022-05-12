@@ -40,7 +40,6 @@ function Main() {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     const nextPage = () => {
-        console.log(pageNumbers);
         if (currentPage !== pageNumbers.length) {
             setCurrentPage(currentPage + 1);
             navigate(`/posts/${currentPage + 1}`);

@@ -3,7 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     posts: [],
     isLoading: true,
-    error: ""
+    error: "",
+    idChangeChecker: false,
+    titleChangeChecker: false,
+    bodyChangeChecker: false
 }
 
 export const postsSlice = createSlice({
@@ -21,6 +24,21 @@ export const postsSlice = createSlice({
         postsFetchingError(state, action) {
             state.isLoading = false;
             state.error = action.payload;
+        },
+
+        postsSortById(state) {
+            state.idChangeChecker = !state.idChangeChecker;
+            if (state.idChangeChecker) {
+                state.posts.sort((a, b) => a.id < b.id ? 1 : -1);
+            } else {
+                state.posts.sort((a, b) => a.id > b.id ? 1 : -1);
+            }
+        },
+        postsSortTitle(state) {
+            state.posts.sort((a, b) => a.title > b.title ? 1 : -1);
+        },
+        postsSortBody(state) {
+            state.posts.sort((a, b) => a.body > b.body ? 1 : -1);
         }
     }
 })
