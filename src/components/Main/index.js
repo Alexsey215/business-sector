@@ -19,7 +19,7 @@ function Main() {
 
     useEffect(() => {
         dispatch(fetchPosts());
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
         if (page) {

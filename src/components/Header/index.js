@@ -1,5 +1,5 @@
 import { Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { postsSlice } from "../../store/reducers/PostsSlice";
 import style from "./index.module.scss"
 
