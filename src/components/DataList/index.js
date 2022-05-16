@@ -15,8 +15,8 @@ const DataList = ({ items, loading, error }) => {
                     items.map((item) =>
                         <Row className={style.wrap__data} key={item.id}>
                             <Col className="align-self-center" xs={1}>{item.id}</Col>
-                            <Col className="text-start align-self-center p-2" xs={6}>{item.title}</Col>
-                            <Col className="text-start align-self-center p-2" xs={5}>{item.body}</Col>
+                            <Col className="text-start align-self-center" xs={6}>{item.title}</Col>
+                            <Col className="text-start align-self-center" xs={5}>{item.body}</Col>
                         </Row>
                     )
                 }

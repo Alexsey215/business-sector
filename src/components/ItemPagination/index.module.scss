@@ -1,7 +1,6 @@
 .pagination {
-    position: absolute;
-    width: 1077px;
-    bottom: 15px;
+    position: sticky;
+    bottom: 10px;
     display: flex;
     list-style: none;
     justify-content: space-between;
