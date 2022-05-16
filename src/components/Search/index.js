@@ -1,26 +1,36 @@
 import style from "./index.module.scss";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Search = () => {
+const Search = ({ renderSearchedItems }) => {
     const [request, setRequest] = useState('')
+    const navigate = useNavigate();
+    const { fetchedPosts } = useSelector(state => state.postsReducer);
 
-    const { posts } = useSelector(state => state.postsReducer);
+    const uniqueSearchedItems = [];
+
 
     const searchHandler = (e) => {
         e.preventDefault()
+        navigate("/posts/1");
+
         const searchedItems = [];
-        for (let i = 0; i < posts.length; i++) {
-            if (posts[i].title.toLowerCase().includes(request.toLowerCase())) {
-                searchedItems.push(posts[i]);
+
+        searchedItems.push(...fetchedPosts.filter(post => post.title.toLowerCase().trim().includes(request.trim().toLowerCase())));
+        searchedItems.push(...fetchedPosts.filter(post => post.body.toLowerCase().trim().includes(request.trim().toLowerCase())));
+        searchedItems.push(...fetchedPosts.filter(post => post.id.toString().trim().includes(request.trim().toLowerCase())));
+
+        for (let item of searchedItems) {
+            if (!uniqueSearchedItems.includes(item)) {
+                uniqueSearchedItems.push(item);
             }
         }
-        console.log(searchedItems);
-    }
 
-    // const filteredItems = useMemo(() => {
-    //     return posts.filter(post => post.title.toLowerCase().includes(request.toLowerCase()));
-    // }, [request])
+        uniqueSearchedItems.sort((a, b) => a.id > b.id ? 1 : -1);
+
+        renderSearchedItems(uniqueSearchedItems);
+    }
 
     return (
         <>

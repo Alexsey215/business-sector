@@ -1,13 +1,15 @@
 import style from "./index.module.scss";
-import { Link } from "react-router-dom";
-const ItemPagination = ({ pageNumbers, paginate, nextPage, prevPage }) => {
+import { Link, useParams } from "react-router-dom";
 
+
+const ItemPagination = ({ pageNumbers, paginate, nextPage, prevPage }) => {
+    const { page } = useParams();
     return (
-        <div className={style.pagination + " " + "navbar-fixed-bottom"}>
+        <div className={style.pagination}>
             <button className={style.pagination__btn} onClick={() => prevPage()}>Назад</button>
             <div className={style.pagination__links}>
                 {pageNumbers.map((number) => (
-                    <Link className={style.pagination__links__link} onClick={() => paginate(number)} key={number} to={`/posts/${number}`}>
+                    <Link className={number == page ? style.pagination__links__active : style.pagination__links__link} onClick={() => paginate(number)} key={number} to={`/posts/${number}`}>
                         <li>
                             {number}
                         </li>

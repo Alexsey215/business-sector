@@ -9,10 +9,10 @@ import { fetchPosts } from "../../store/reducers/ActionCreators";
 
 function Main() {
     const dispatch = useDispatch();
-    const { posts, isLoading, error } = useSelector(state => state.postsReducer);
+    const { fetchedPosts, searchedPosts, isLoading, error } = useSelector(state => state.postsReducer);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage, setPostPerPage] = useState(10)
+    const [postsPerPage] = useState(10)
 
     const { page } = useParams();
     const navigate = useNavigate();
@@ -27,6 +27,8 @@ function Main() {
         }
     }, [page])
 
+    let posts = [];
+    searchedPosts.length > 0 ? posts = searchedPosts : posts = fetchedPosts;
 
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -37,7 +39,10 @@ function Main() {
         pageNumbers.push(i);
     }
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const paginate = (pageNumber) => {
+
+        setCurrentPage(pageNumber)
+    };
 
     const nextPage = () => {
         if (currentPage !== pageNumbers.length) {
@@ -53,9 +58,14 @@ function Main() {
         }
     }
 
+
+    const renderSearchedItems = (searchedItems) => {
+        dispatch(fetchPosts(searchedItems))
+    }
+
     return (
         <>
-            <Search />
+            <Search renderSearchedItems={renderSearchedItems} />
             <DataList items={currentPosts} loading={isLoading} error={error} />
             <ItemPagination
                 pageNumbers={pageNumbers}

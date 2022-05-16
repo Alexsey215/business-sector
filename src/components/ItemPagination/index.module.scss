@@ -1,8 +1,11 @@
 .pagination {
+    position: absolute;
+    width: 1077px;
+    bottom: 15px;
     display: flex;
     list-style: none;
     justify-content: space-between;
-    margin-top: 24px;
+    margin-top: 15px;
 
     &__btn {
         border: none;
@@ -30,6 +33,21 @@
             line-height: 137.69%;
             text-decoration: none;
             color: #474955;
+            transition: 0.2s;
+
+            &:hover {
+                color: #7EBC3C;
+            }
+        }
+
+        &__active {
+            padding: 5px;
+            font-style: italic;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 137.69%;
+            text-decoration: none;
+            color: #7EBC3C;
             transition: 0.2s;
 
             &:hover {
